@@ -1,0 +1,25 @@
+---
+# tasks file for govc
+#
+- name: Register the current govc version (if any)
+  command: govc version
+  ignore_errors: yes
+  register: govc_version_found
+  changed_when: false
+
+- include: download.yml
+  when: "govc_version_found|failed or '{{govc_version}}' not in govc_version_found.stdout"
+
+- name: uncompress govc binary
+  command: "gunzip {{govc_tmp}}/govc-{{govc_version}}.gz"
+  args:
+    creates: "{{govc_tmp}}/govc-{{govc_version}}"
+  when: "govc_version_found|failed or '{{govc_version}}' not in govc_version_found.stdout"
+
+- name: move govc into place
+  copy:
+    src: "{{govc_tmp}}/govc-{{govc_version}}"
+    dest: "{{govc_file}}"
+    mode: 0755
+  when: "govc_version_found|failed or '{{govc_version}}' not in govc_version_found.stdout"
+
