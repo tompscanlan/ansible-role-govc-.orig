@@ -1,6 +1,15 @@
 ---
 - hosts: localhost
   remote_user: root
+  pre_tasks:
+    - package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - gzip
+      when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == "12.04"
+
+
   roles:
     - { role: ansible-role-govc, govc_path: /tmp}
 
