@@ -10,23 +10,5 @@
       when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == "12.04"
 
   roles:
-#    - { role: ansible-role-govc, govc_path: /tmp}
-
-
-    - role: ansible-role-govc
-      vars:
-        govc_path: /tmp
-    - role: ansible-role-govc
-      vars:
-        govc_path: /tmp
-        govc_ova_imports:
-          - name: testing
-            ova: /tmp/photon.ova
-
-  vars:
-    downloads_dir: /tmp
-    assets:
-      photon.ova:
-        description: "photon ova"
-        checksum: "18c1a6d31545b757d897c61a0c3cc0e54d8aeeba"
-        url:  "https://bintray.com/vmware/photon/download_file?file_path=photon-custom-hw11-1.0-62c543d.ova"
+    - { role: ansible-role-govc, govc_path: /tmp }
+    - { role: ansible-role-govc, govc_version: "0.13.0" }

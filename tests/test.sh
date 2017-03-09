@@ -49,10 +49,11 @@ for ((i=0;i<${#containers[@]};++i)); do
 
     docker exec "$(cat ${container_id})" bash -c 'pip install ansible;'
     docker exec "$(cat ${container_id})" bash -c 'ansible-playbook /etc/ansible/roles/ansible-role-govc/tests/test.yml --syntax-check'
-    docker exec "$(cat ${container_id})" bash -c 'ansible-playbook /etc/ansible/roles/ansible-role-govc/tests/test.yml;'
+    docker exec "$(cat ${container_id})" bash -c 'ansible-playbook /etc/ansible/roles/ansible-role-govc/tests/test.yml -vv;'
 
     # verify govc installed
     docker exec "$(cat ${container_id})" bash -c '/tmp/govc version'
+    docker exec "$(cat ${container_id})" bash -c '/usr/bin/govc version'
     docker kill "$(cat ${container_id})"
 done
 
