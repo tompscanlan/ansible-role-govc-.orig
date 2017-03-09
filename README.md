@@ -20,17 +20,49 @@ Path to install the binary.  Can be used to install to user local path, or syste
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Not a true dependency, but you'll probably want to install [ansible-role-assets](../ansible-role-assets)
+to pull a set of OVAs.
+
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+```yaml
 
-    - hosts: servers
-      roles:
-         - { role: tompscanlan.govc, govc_path: ~/bin }
+---
+- hosts: adminServers
+  roles:
 
+    # Just install govc in standard path
+    - role: ansible-role-govc
+    
+    # install govc v0.12.1 in /tmp,
+    # and import a photon ova into an esx or vcenter server
+    
+    - role: ansible-role-govc
+      vars:
+        govc_path: /tmp
+        govc_version: "0.12.1"
+        
+        # esx or vcenter host and credentials
+        govc_host: esx-a.home.local
+        govc_username: administrator@home.local
+        govc_password: password
+        
+        # alternativly, use govc_url        
+        #govc_url:  https://user:pass@host/sdk
+
+        govc_ova_imports:
+          - name: photon01
+            ova: /tmp/photon.ova
+          - name: photon02
+            ova: /tmp/photon.ova
+          - name: vcsa
+            spec: /tmp/vcsa.json
+            ova: /tmp/vcsa.ova
+            
+
+```
 License
 -------
 

@@ -30,7 +30,13 @@
 
 # unless vm by this name already exists, import ova
 - name: Import OVA
-  command: "{{ govc_file }} import.ova -name={{ item.0.name |quote }} {{ item.0.ova |quote }}"
+  command: >
+    {{ govc_file }} import.ova
+    {% if item.0.spec is defined %}
+      -options={{ item.0.spec }}
+    {% endif %}
+    -name={{ item.0.name |quote }}
+    {{ item.0.ova |quote }}
   environment:
     GOVC_HOST: "{{ govc_host }}"
     GOVC_URL: "https://{{ govc_host }}/sdk"

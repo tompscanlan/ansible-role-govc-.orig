@@ -13,6 +13,7 @@
         govc_ova_imports:
           - name: testing
             ova: /tmp/photon.ova
+            spec: /tmp/p.json
           - name: testing1
             ova: /tmp/photon.ova
           - name: testing2
