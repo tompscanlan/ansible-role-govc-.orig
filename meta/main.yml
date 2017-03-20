@@ -1,9 +1,12 @@
+# Copyright © 2017 VMware, Inc. All Rights Reserved.
+# SPDX-License-Identifier: MIT
+
 galaxy_info:
   author: Tom Scanlan
-  description: Install govc binary
+  description: Install govc binary, a staticly linked cli tool for operations on vcenter server
   company: VMware
   license: MIT
-  min_ansible_version: 1.2
+  min_ansible_version: 2.0
 
   # Optionally specify the branch Galaxy will use when accessing the GitHub
   # repo for this role. During role install, if no tags are available,
@@ -59,9 +62,10 @@ galaxy_info:
     - wheezy
   - name: opensuse
     versions:
-    - all
+    - 42.2
 
   galaxy_tags:
     - vmware
     - golang
     - ova
+    - vcenter

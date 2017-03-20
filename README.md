@@ -63,12 +63,11 @@ Example Playbook
             
 
 ```
+
 License
 -------
 
-Copyright VMware
-
-Apache
+MIT
 
 Author Information
 ------------------
@@ -76,3 +75,6 @@ Author Information
 Tom Scanlan
 tscanlan@vmware.com
 tompscanlan@gmail.com
+
+Copyright © 2017 VMware, Inc. All Rights Reserved.
+SPDX-License-Identifier: MIT

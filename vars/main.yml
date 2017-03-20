@@ -1,4 +1,0 @@
----
-# vars file for govc
-govc_download_url: "https://github.com/vmware/govmomi/releases/download/v{{govc_version}}"
-# https://github.com/vmware/govmomi/releases/download/v0.12.1/govc_darwin_386.gz

@@ -1,3 +1,6 @@
+# Copyright © 2017 VMware, Inc. All Rights Reserved.
+# SPDX-License-Identifier: MIT
+
 ---
 # playbook to download photon-os ova, and import it into esx or vcenter
 
