@@ -3,7 +3,7 @@
 
 galaxy_info:
   author: Tom Scanlan
-  description: Install govc binary, a staticly linked cli tool for operations on vcenter server
+  description: Install and manage govc, a statically linked cli tool for operations on VMware vCenter server
   company: VMware
   license: MIT
   min_ansible_version: 2.0

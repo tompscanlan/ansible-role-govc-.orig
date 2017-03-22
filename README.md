@@ -1,8 +1,7 @@
 govc
 =========
 
-Install govc binary
-
+Install and manage govc, a statically linked cli tool for operations on VMware vCenter server
 Requirements
 ------------
 
