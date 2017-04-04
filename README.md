@@ -1,15 +1,12 @@
-govc
-=========
+# ansible-role-govc
 
-Install govc binary
+Install and manage govc, a statically linked cli tool for operations on VMware vCenter server
 
-Requirements
-------------
+## Requirements
 
 - gunzip
 
-Role Variables
---------------
+## Role Variables
 
 To set the specific version of the binary to install
 - govc\_version: "0.12.1"
@@ -17,30 +14,59 @@ To set the specific version of the binary to install
 Path to install the binary.  Can be used to install to user local path, or system wide path.
 - govc\_path: /usr/bin
 
-Dependencies
-------------
+## Dependencies
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Not a true dependency, but you'll probably want to install [ansible-role-assets](../ansible-role-assets)
+to pull a set of OVAs.
 
-Example Playbook
-----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+## Example Playbook
 
-    - hosts: servers
-      roles:
-         - { role: tompscanlan.govc, govc_path: ~/bin }
+```yaml
 
-License
--------
+---
+- hosts: adminServers
+  roles:
 
-Copyright VMware
+    # Just install govc in standard path
+    - role: ansible-role-govc
 
-Apache
+    # install govc v0.12.1 in /tmp,
+    # and import a photon ova into an esx or vcenter server
 
-Author Information
-------------------
+    - role: ansible-role-govc
+      vars:
+        govc_path: /tmp
+        govc_version: "0.12.1"
+
+        # esx or vcenter host and credentials
+        govc_host: esx-a.home.local
+        govc_username: administrator@home.local
+        govc_password: password
+
+        # alternativly, use govc_url
+        #govc_url:  https://user:pass@host/sdk
+
+        govc_ova_imports:
+          - name: photon01
+            ova: /tmp/photon.ova
+          - name: photon02
+            ova: /tmp/photon.ova
+          - name: vcsa
+            spec: /tmp/vcsa.json
+    ova: /tmp/vcsa.ova
+
+
+```
+
+## License
+
+Copyright © 2017 VMware, Inc. All Rights Reserved.
+SPDX-License-Identifier: MIT
+
+## Author Information
 
 Tom Scanlan
 tscanlan@vmware.com
 tompscanlan@gmail.com
+
