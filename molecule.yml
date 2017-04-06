@@ -18,6 +18,7 @@ ansible:
 driver:
   name: docker
 docker:
+  containers:
     - name: photon
       image: photon
       image_version: latest
