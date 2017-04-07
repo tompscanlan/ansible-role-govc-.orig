@@ -5,9 +5,11 @@ RUN	tdnf makecache && \
 	    binutils \
 	    gzip \
 	    libxml2 \
+	    linux-api-headers \
 	    procps-ng \
 	    python-xml \
 	    python2 \
+	    sed \
 	    shadow \
 	    systemd \
 	    yum \
